@@ -49,16 +49,13 @@ def move():
     dupe = targets.copy()
     targets.clear()
 
+    # Target solo si sigue dentro de la pantalla
+    # no ha sido golpeado por la pelota
     for target in dupe:
-        if abs(target - ball) > 13:
+        if inside(target) and abs(target - ball) > 13:
             targets.append(target)
 
     draw()
-
-    for target in targets:
-        if not inside(target):
-            return
-
     ontimer(move, 50)
 
 setup(420, 420, 370, 0)
